@@ -7,3 +7,5 @@
 !.yarn/versions
 node_modules
 .env
+publish.bat
+publish.sh

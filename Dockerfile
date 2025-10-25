@@ -1,15 +1,20 @@
-FROM node:latest
+FROM node:22-alpine
 
-# Create the app's directory
-RUN mkdir -p /usr/src/app
+# Create app directory
 WORKDIR /usr/src/app
 
-COPY . /usr/src/app
+# Copy package files
+COPY package*.json ./
 
-# install dependencies
-RUN corepack enable
-RUN yarn
-RUN yarn install
+# Install dependencies
+RUN npm ci --only=production
 
-# Start the app.
-CMD ["yarn", "node", "index.js"]
+# Copy application code
+COPY . .
+
+# Expose port (default 8080, can be overridden)
+ARG PORT=8080
+EXPOSE ${PORT}
+
+# Start the app
+CMD ["node", "index.js"]

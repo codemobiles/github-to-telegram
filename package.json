@@ -1,24 +1,10 @@
 {
-  "name": "github-to-telegram",
-  "packageManager": "yarn@3.5.0",
-  "version": "0.1.0",
-  "description": "Integrate your GitHub Repository events with Telegram Channel/Group using GitHub Webhooks!",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/agam778/github-to-telegram"
-  },
-  "author": "Agampreet Singh",
-  "license": "GNU General Public License v3.0",
-  "homepage": "https://github.com/agam778/github-to-telegram#readme",
+  "name": "tg-notify",
+  "private": true,
+  "type": "module",
   "dependencies": {
-    "body-parser": "^1.20.2",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "request": "^2.88.2",
-    "telegraf": "^4.12.2"
+    "dotenv": "^17.2.3",
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
   }
 }
