@@ -79,12 +79,18 @@ The service will start on port `8080`.
 
 ### Autoheal Integration
 
-Send POST requests to `/autoheal` endpoint:
+Send POST requests to `/autoheal` endpoint using either method:
 
+**Method 1: JSON Body (Recommended)**
 ```bash
 curl -X POST http://localhost:8080/autoheal \
   -H "Content-Type: application/json" \
-  -d '{"text":"Container nginx restarted successfully"}'
+  -d '{"content":"Container nginx restarted successfully"}'
+```
+
+**Method 2: Query String**
+```bash
+curl -X POST "http://localhost:8080/autoheal?content=Container%20nginx%20restarted%20successfully"
 ```
 
 ### Response
@@ -111,15 +117,21 @@ The service is configured with:
 
 **POST** `/autoheal`
 
-**Request Body:**
+**Request Options:**
+
+Option 1 - JSON Body:
 ```json
 {
-  "text": "Your notification message"
+  "content": "Your notification message"
 }
 ```
+Headers: `Content-Type: application/json`
 
-**Headers:**
-- `Content-Type: application/json`
+Option 2 - Query String:
+```
+?content=Your%20notification%20message
+```
+No special headers required
 
 ## Environment Variables
 

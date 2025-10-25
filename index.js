@@ -13,8 +13,9 @@ const THREAD_ID = process.env.THREAD_ID;
 const PORT = process.env.PORT || 8080;
 
 app.post("/autoheal", async (req, res) => {
-  // autoheal posts { "text": "Container ... restarted ..." }
-  const text = req.body?.text || "Autoheal event (no text)";
+  // Support content from POST body or query string parameter
+  console.log("Body:", JSON.stringify(req.body));
+  const text = req.body?.content || req.query.content || "Autoheal event (no content)";
   try {
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
     const payload = { chat_id: CHAT_ID, text };
